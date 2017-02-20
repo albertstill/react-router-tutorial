@@ -13,16 +13,24 @@ app.use(compression())
 // serve our static stuff like index.css
 app.use(express.static(path.join(__dirname, 'public'), {index: false}))
 
+const PROP = 42;
+
 // send all requests to index.html so browserHistory works
 app.get('*', (req, res) => {
   match({ routes, location: req.url }, (err, redirect, props) => {
+    console.log(props);
     if (err) {
       res.status(500).send(err.message)
     } else if (redirect) {
       res.redirect(redirect.pathname + redirect.search)
     } else if (props) {
       // hey we made it!
-      const appHtml = renderToString(<RouterContext {...props}/>)
+      const appHtml = renderToString(
+        <RouterContext
+          {...props}
+          createElement={(Component, props) => <Component {...props} foo={PROP} />}
+        />
+      )
       res.send(renderPage(appHtml))
     } else {
       res.status(404).send('Not Found')
@@ -38,6 +46,7 @@ function renderPage(appHtml) {
     <title>My First React Router App</title>
     <link rel=stylesheet href=/index.css>
     <div id=app>${appHtml}</div>
+    <script>window.reactData = ${PROP};</script>
     <script src="/bundle.js"></script>
    `
 }

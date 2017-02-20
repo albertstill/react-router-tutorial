@@ -3,6 +3,7 @@ import NavLink from './NavLink'
 
 export default React.createClass({
   render() {
+    console.log(this.props.foo);
     return (
       <div>
         <h1>React Router Tutorial</h1>
