@@ -17,6 +17,7 @@
   "dependencies": {
     "compression": "^1.6.1",
     "express": "^4.13.4",
+    "htmlescape": "^1.1.1",
     "if-env": "^1.0.0",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",

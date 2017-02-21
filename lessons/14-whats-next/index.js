@@ -5,7 +5,7 @@ import App from './modules/App'
 
 render(
   <BrowserRouter>
-    <App foo={window.reactData} />
+    <App initialProps={window.reactData} />
   </BrowserRouter>,
-  document.getElementById('app')
+  document
 )

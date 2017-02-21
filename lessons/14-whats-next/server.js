@@ -13,7 +13,7 @@ app.use(compression())
 // serve our static stuff like index.css
 app.use(express.static(path.join(__dirname, 'public'), {index: false}))
 
-const PROP = 42;
+const PROPS = { answer: 42 };
 
 // send all requests to index.html so browserHistory works
 app.get('*', (req, res) => {
@@ -21,7 +21,7 @@ app.get('*', (req, res) => {
 
   const html = ReactDOMServer.renderToString(
     <StaticRouter location={req.url} context={context}>
-      <App foo={PROP}/>
+      <App initialProps={PROPS} />
     </StaticRouter>
   )
 
@@ -33,23 +33,10 @@ app.get('*', (req, res) => {
     )
     res.end()
   } else {
-    res.send(renderPage(html))
+    res.send(html)
   }
 
 })
-
-function renderPage(appHtml) {
-  return `
-    <!doctype html public="storage">
-    <html>
-    <meta charset=utf-8/>
-    <title>My First React Router App</title>
-    <link rel=stylesheet href=/index.css>
-    <div id=app>${appHtml}</div>
-    <script>window.reactData = ${PROP};</script>
-    <script src="/bundle.js"></script>
-   `
-}
 
 var PORT = process.env.PORT || 8080
 app.listen(PORT, function() {
