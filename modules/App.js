@@ -6,21 +6,22 @@ import About from './About';
 import htmlescape from 'htmlescape';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-export default React.createClass({
-  getInitialState() {
-    return { title: 0 };
-  },
+export default class extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = { title: 0 };
+  }
 
   componentWillMount() {
     this.props.initialProps && console.log('The props are here woop', this.props.initialProps);
-  },
+  }
 
   componentDidMount() {
     setInterval(
       () => { this.setState({ title: Math.round(Math.random() * 100) / 100 }); },
       1000,
     );
-  },
+  }
 
   render() {
     return (
@@ -49,5 +50,5 @@ export default React.createClass({
         </body>
       </html>
     );
-  },
-});
+  }
+}

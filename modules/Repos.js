@@ -3,10 +3,15 @@ import NavLink from './NavLink';
 import { Route } from 'react-router-dom';
 import Repo from './Repo';
 
-export default React.createClass({
-  contextTypes: {
+export default class extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  static contextTypes = {
     router: React.PropTypes.object,
-  },
+  };
 
   handleSubmit(event) {
     event.preventDefault();
@@ -14,7 +19,7 @@ export default React.createClass({
     const repo = event.target.elements[1].value;
     const path = `/repos/${userName}/${repo}`;
     this.context.router.push(path);
-  },
+  }
 
   render() {
     return (
@@ -34,5 +39,5 @@ export default React.createClass({
         <Route exact path="/repos/:userName/:repoName" component={Repo} />
       </div>
     );
-  },
-});
+  }
+}

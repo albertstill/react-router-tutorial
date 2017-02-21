@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default React.createClass({
+export default class extends React.Component {
   render() {
     const { userName, repoName } = this.props.match.params;
     return (
@@ -8,5 +8,5 @@ export default React.createClass({
         <h2>{userName} / {repoName}</h2>
       </div>
     );
-  },
-});
+  }
+}
