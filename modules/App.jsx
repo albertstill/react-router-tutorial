@@ -1,10 +1,10 @@
 import React from 'react';
+import htmlescape from 'htmlescape';
+import { Route } from 'react-router-dom';
 import NavLink from './NavLink';
 import Home from './Home';
 import Repos from './Repos';
 import About from './About';
-import htmlescape from 'htmlescape';
-import { BrowserRouter, Route } from 'react-router-dom';
 
 export default class extends React.Component {
   constructor(props, context) {
@@ -13,7 +13,7 @@ export default class extends React.Component {
   }
 
   componentWillMount() {
-    this.props.initialProps && console.log('The props are here woop', this.props.initialProps);
+    if (this.props.initialProps) console.log('The props are here woop', this.props.initialProps);
   }
 
   componentDidMount() {
@@ -25,13 +25,13 @@ export default class extends React.Component {
 
   render() {
     return (
-      <html>
+      <html lang="en">
         <head>
           <title>{`${this.state.title} (no react-helmet needed)`}</title>
         </head>
         <body>
           <h1>React Router Tutorial</h1>
-          <ul role="nav">
+          <ul>
             <li><NavLink to="/" exact>Home</NavLink></li>
             <li><NavLink to="/about">About</NavLink></li>
             <li><NavLink to="/repos">Repos</NavLink></li>
@@ -44,7 +44,7 @@ export default class extends React.Component {
 
           {/* for mounting React with the server side props in the client */}
           <script
-            dangerouslySetInnerHTML={{ __html: `window.reactData=${htmlescape(this.props.initialProps)}` }}
+            dangerouslySetInnerHTML={{ __html: `window.reactData=${htmlescape(this.props.initialProps)}` }} // eslint-disable-line react/no-danger
           />
           <script src="/bundle.js" />
         </body>

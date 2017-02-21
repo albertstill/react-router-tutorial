@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
 
-  entry: path.resolve(__dirname, 'server.js'),
+  entry: path.resolve(__dirname, 'server.jsx'),
 
   output: {
     filename: 'server.bundle.js',
@@ -15,7 +15,7 @@ module.exports = {
   externals: fs.readdirSync(path.resolve(__dirname, 'node_modules')).concat([
     'react-dom/server',
   ]).reduce((ext, mod) => {
-    ext[mod] = `commonjs ${mod}`;
+    ext[mod] = `commonjs ${mod}`; // eslint-disable-line no-param-reassign
     return ext;
   }, {}),
 
@@ -26,8 +26,11 @@ module.exports = {
 
   module: {
     loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react' },
+      { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react' },
     ],
   },
 
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
 };

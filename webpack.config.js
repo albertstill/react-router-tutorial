@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './browser.js',
+  entry: './browser.jsx',
 
   output: {
     path: 'public',
@@ -17,7 +17,11 @@ module.exports = {
 
   module: {
     loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react' },
+      { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react' },
     ],
+  },
+
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
   },
 };

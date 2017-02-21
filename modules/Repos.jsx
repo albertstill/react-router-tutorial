@@ -1,17 +1,13 @@
 import React from 'react';
-import NavLink from './NavLink';
 import { Route } from 'react-router-dom';
+import NavLink from './NavLink';
 import Repo from './Repo';
 
-export default class extends React.Component {
+class Repos extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  static contextTypes = {
-    router: React.PropTypes.object,
-  };
 
   handleSubmit(event) {
     event.preventDefault();
@@ -41,3 +37,9 @@ export default class extends React.Component {
     );
   }
 }
+
+Repos.contextTypes = {
+  router: React.PropTypes.object,
+};
+
+export default Repos;

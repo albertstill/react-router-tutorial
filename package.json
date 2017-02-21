@@ -11,7 +11,7 @@
     "build:client": "webpack",
     "build:server": "webpack --config webpack.server.config.js",
     "build": "npm run build:client && npm run build:server",
-    "lint": "eslint ./"
+    "lint": "eslint --ext .js --ext .jsx ./"
   },
   "author": "",
   "license": "ISC",
