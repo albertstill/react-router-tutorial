@@ -28,6 +28,7 @@ export default class extends React.Component {
       <html lang="en">
         <head>
           <title>{`${this.state.title} (no react-helmet needed)`}</title>
+          <link rel="stylesheet" type="text/css" href="/index.css" />
         </head>
         <body>
           <h1>React Router Tutorial</h1>
