@@ -1,4 +1,4 @@
-# A vanilla universal server that mounts JSX into the entire DOM
+# A vanilla universal React server that mounts JSX into the entire DOM
 
 An example of how you could build a universal React app using vanilla React and React Router v4.
 
