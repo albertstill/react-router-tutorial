@@ -1,5 +1,7 @@
 import React from 'react'
 import NavLink from './NavLink'
+import { Route } from 'react-router-dom'
+import Repo from './Repo'
 
 export default React.createClass({
   contextTypes: {
@@ -19,7 +21,7 @@ export default React.createClass({
       <div>
         <h2>Repos</h2>
         <ul>
-          <li><NavLink to="/repos/reactjs/react-router">React Router</NavLink></li>
+          <li><NavLink to="/repos/reactjs/react-router-dom">React Router</NavLink></li>
           <li><NavLink to="/repos/facebook/react">React</NavLink></li>
           <li>
             <form onSubmit={this.handleSubmit}>
@@ -29,7 +31,7 @@ export default React.createClass({
             </form>
           </li>
         </ul>
-        {this.props.children}
+        <Route exact path="/repos/:userName/:repoName" component={Repo}/>
       </div>
     )
   }

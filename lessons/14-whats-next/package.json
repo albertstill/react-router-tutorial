@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "watch": "nodemon -w server.js -w ./modules -x 'npm run build && node server.bundle.js'",
+    "watch": "nodemon -w server.js -w ./modules -x 'npm run build && node --inspect server.bundle.js'",
     "start:dev": "webpack-dev-server --inline --content-base public/ --history-api-fallback",
     "start:prod": "npm run build && node server.bundle.js",
     "build:client": "webpack",
@@ -18,9 +18,9 @@
     "compression": "^1.6.1",
     "express": "^4.13.4",
     "if-env": "^1.0.0",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7",
-    "react-router": "^2.0.0"
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0",
+    "react-router-dom": "^4.0.0-beta.6"
   },
   "devDependencies": {
     "babel-core": "^6.5.1",
