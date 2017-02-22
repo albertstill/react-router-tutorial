@@ -33,7 +33,7 @@ app.get('*', (req, res) => {
     );
     res.end();
   } else {
-    res.send(html);
+    res.send(`<!doctype html>${html}`);
   }
 });
 

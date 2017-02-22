@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "watch": "nodemon -e js,jsx -w server.js -w ./modules -x 'npm run build && node --inspect server.bundle.js'",
+    "watch": "nodemon -e js,jsx -w browser.jsx -w server.jsx -w ./modules -x 'npm run build && node --inspect server.bundle.js'",
     "build": "npm run build:client && npm run build:server",
     "build:client": "webpack",
     "build:server": "webpack --config webpack.server.config.js",
