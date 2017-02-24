@@ -1,15 +1,15 @@
 {
   "name": "react-top-to-bottom",
   "version": "1.0.0",
-  "description": "",
+  "description": "The most simple vanilla universal React app possible",
+  "main": "index.js",
   "scripts": {
-    "watch": "nodemon -e js,jsx -w browser.jsx -w server.jsx -w ./modules -x 'npm run build && node --inspect server.bundle.js'",
-    "build": "npm run build:client && npm run build:server",
-    "build:client": "webpack",
-    "build:server": "webpack --config webpack.server.config.js",
+    "watch": "nodemon -e js,jsx -i public -x 'npm run build && node index.js'",
+    "build": "webpack",
     "lint": "eslint --ext .js --ext .jsx ./"
   },
   "dependencies": {
+    "babel-register": "^6.23.0",
     "compression": "^1.6.1",
     "express": "^4.13.4",
     "htmlescape": "^1.1.1",
