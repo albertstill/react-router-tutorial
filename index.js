@@ -1,7 +1,7 @@
 require('babel-register')({
-  only: /(server.jsx|modules)/,
+  only: /\/react-top-to-bottom\/(server.jsx|modules\/)/,
   presets: ['es2015', 'react'],
-  extensions: ['.jsx'],
+  extensions: ['.jsx', '.js'],
 });
 const express = require('express');
 const path = require('path');
